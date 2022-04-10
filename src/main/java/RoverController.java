@@ -1,4 +1,4 @@
-//import javax.swing.text.Position;
+
 
 public class RoverController {
 
@@ -10,14 +10,14 @@ public class RoverController {
 
         System.out.println("In rover controller " + name + " " + plateau + " " + roverStartPosition);
 
-        String[] parts = roverStartPosition.split(" ");
-        int x = Integer.parseInt(parts[0]);
-        int y = Integer.parseInt(parts[1]);
-        char heading = parts[2].toCharArray()[0];
+        String[] part = roverStartPosition.split(" ");
+        int x = Integer.parseInt(part[0]);
+        int y = Integer.parseInt(part[1]);
+        char direction = part[2].toCharArray()[0];
 
-        System.out.println("heading= " + heading);
+        System.out.println("Direction= " + direction);
 
-        return "true";
+        return Character.toString(direction);
     }
 
 }
