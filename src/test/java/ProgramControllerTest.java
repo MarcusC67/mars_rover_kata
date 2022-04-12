@@ -1,9 +1,8 @@
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 public class ProgramControllerTest {
 
@@ -17,36 +16,30 @@ public class ProgramControllerTest {
         assertEquals("55", actual);
     }
 
-    // Check direction stripped from 3rd char of input
     @Test
     public void checkInput2SplitStringAndGetDirection() {
-
-        String actual = ProgramController.getDirection("1 1 N" );
-        assertEquals("N", actual);
+       String actual = ProgramController.getDirection("1 1 N" );
+       assertEquals("N", actual);
     }
 
-    // Check first direction instruction "L" with a direction of "N"
     @Test
     public void checkProcessFirstInstructionLeftDirectionNorth() {
         String actual = RoverMove.rotateLeft("N");
         assertEquals("W", actual);
     }
 
-    // Check rotateLeft
     @ParameterizedTest
     @CsvSource(value = {"N:W","W:S","S:E","E:N"}, delimiter = ':')
     public void checkProcessRotateLeft(String input, String expected) {
         assertEquals(expected, RoverMove.rotateLeft(input));
     }
 
-    // Check rotateRight
     @ParameterizedTest
     @CsvSource(value = {"N:E","E:S","S:W","W:N"}, delimiter = ':')
     public void checkProcessRotateRight(String input, String expected) {
         assertEquals(expected, RoverMove.rotateRight(input));
     }
 
-    // Check can process move forward
     @Test
     public void checkProcessMoveForward() {
 
@@ -65,6 +58,12 @@ public class ProgramControllerTest {
         actual = RoverMove.moveForward(1, 1, "W");
         expected = new int[] {0, 1};
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void checkProcessInstructionStringAndOutputCorrectFinalPosition() {
+        String actual = Directions.processInstructions("N", "LMLMLMLMM", "1 2 N");
+        assertEquals("1 3 N", actual);
     }
 
 }
