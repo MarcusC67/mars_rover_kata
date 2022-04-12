@@ -9,31 +9,47 @@ public class ProgramController {
         // Accept input for plateau dimensions x and y
         System.out.println("Enter plateau dimensions x and y: ");
         String dimensions = scan.nextLine();
-        // call buildPlateau method
+
+        // Call buildPlateau method
         String plateau = buildPlateau(dimensions);
         System.out.println("plateau = " + plateau);
 
-        // Accept input coordinates for start position to place Rover on plateau
-        String name = "Rover1";
-        System.out.println("Enter location of " + name + " as - x y h: ");
-        String roverStartPosition = scan.nextLine();
+        // Loop through each rover
+        int i = 0;
+        while (i < 2) {
+            i++;
 
-        // call method to strip direction from input
-        String direction = getDirection(roverStartPosition);
-        System.out.println("Direction= " + direction);
+            String name = "Rover" + i;
 
-        // Accept input string for Rover direction instructions
-        System.out.println("Enter instructions: ");
-        String navInstructions = scan.nextLine();
+            // Accept input coordinates for start position to place Rover on plateau
+            System.out.println("Enter location of " + name + " as - x y h: ");
+            String startPosition = scan.nextLine();
 
-        // navInstructions = "LMLMLMLMLMM";
+            // Call method to strip direction from input
+            String direction = getDirection(startPosition);
+            System.out.println("Direction= " + direction);
 
-        for (int i = 0; i < navInstructions.length(); i++) {
-            char instruction = navInstructions.charAt(i);
-            // System.out.println("print each : " +  instruction);
-            MoveRover.processInstructions(direction, instruction);
+            // Accept input string for Rover direction instructions
+            System.out.println("Enter instructions: ");
+            String navInstructions = scan.nextLine();
+
+            for (int j = 0; j < navInstructions.length(); j++) {
+                char instruction = navInstructions.charAt(j);
+                System.out.println("print each : " +  instruction);
+
+                switch (instruction) {
+                    case 'L': RoverMove.rotateLeft(direction);
+                    case 'R': RoverMove.rotateRight(direction);
+                    case 'M':
+                        int[] startCoordinates = getXYCoordinates(startPosition);
+                        int x = startCoordinates[0];
+                        int y = startCoordinates[1];
+                        int[] endCoordinates = RoverMove.moveForward(x, y, direction);
+                        System.out.println("end coordinates = " + endCoordinates);
+                    default: throw new RuntimeException("Should not get here!");
+                }
+            }
         }
-
     }
 
     public static String buildPlateau(String dimensions) {
@@ -43,19 +59,18 @@ public class ProgramController {
         String strDimensions = x + y;
         return strDimensions;
     }
+    private static int[] getXYCoordinates(String startPosition) {
+        String[] part = startPosition.split(" ");
+        int[] arrayCoordinates = new int[2];
+        arrayCoordinates[0] = Integer.parseInt(part[0]);
+        arrayCoordinates[1] = Integer.parseInt(part[1]);
+        return arrayCoordinates;
+    }
 
-    public static String getDirection(String roverStartPosition) {
-
-        //System.out.println("Start Position = " + roverStartPosition);
-
-        String[] part = roverStartPosition.split(" ");
-        int x = Integer.parseInt(part[0]);
-        int y = Integer.parseInt(part[1]);
-        char direction = part[2].toCharArray()[0];
-
-        String strDirection = Character.toString(direction);
+    public static String getDirection(String startPosition) {
+        String[] part = startPosition.split(" ");
+        String strDirection = part[2];
         return strDirection;
-
     }
 
 }
