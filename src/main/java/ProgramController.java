@@ -10,9 +10,8 @@ public class ProgramController {
         System.out.println("Enter plateau dimensions x and y: ");
         String dimensions = scan.nextLine();
 
-        // Call buildPlateau method
+        // Call method to set plateau dimensions
         String plateau = buildPlateau(dimensions);
-        System.out.println("plateau = " + plateau);
 
         // Loop through each rover
         int i = 0;
