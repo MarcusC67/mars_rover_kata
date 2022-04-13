@@ -52,19 +52,12 @@ Expected Output:<br>
 1 3 N<br>
 5 1 E<br>
 
-<h4>Your Solution</h4>
-Feel free to implement an approach that you feel comfortable with to receive input into your program e.g. feeding input values into unit tests;
-input via a console application; supplying input via a file etc.
-We would like you to apply Test-Driven Development (TDD) to test-drive your solution.
-We would like to see production-quality code, this means you have thought carefully about your code design and that your code is clean and
-well-tested.<br>
-We’d love to see good unit test coverage and all unit tests passing.<br>
-<h4>Top Tips</h4>
-Sketch / plan out your ideas first, we recommend starting of by modelling what you need using the Unified Modelling Language (UML).
-Commit into your Github repository frequently and with descriptive commit messages.
 
-Write a descriptive README to document the key features of your solution, your assumptions, approaches and future thoughts.
-Note down future thoughts / considerations:
-You can make the assumption that the Plateau is rectangular, but be sure to have a think about how easily your program can be
-extended upon in the future to support a different shaped Plateau.
-How might your Plateau support other vehicles and not just Rovers?
+<h4>Your Solution</h4>
+After creating an initial <a href="..\docs\Mars%20Rover%20UML.drawio">UML diagram </a> to outline my OOP approach, I began Test-Driven Development (TDD) to build a solution in Java. In the course of this, development became a balancing 
+act between following the UML and adhering to TDD with early parts of the TDD following my UML closely while latter stages began to differ slightly. The code was split into 3 classes and refactored where possible. 
+<h4>Assumptions</h4>
+For the purposes of this project, I have assumed there are only 2 rovers, although I have coded it to easily allow for more. The Plateau is assumed to be rectangular.
+<h4>Future Thoughts</h4>
+The ProgramController class could be modified to call additional types of vehicle classes. The code does not check for obstacles but this will be added. Checks for the edge of the plateau will also be added. Functionality to allow the Rover's to take photographs and collect samples can be added. I need to identify further refactoring opportunities and 
+search for ways to improve code efficiency. Once I've added the edge of plateau checks, I will investigate how to support a different shaped Plateau.
