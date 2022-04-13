@@ -54,8 +54,8 @@ Expected Output:<br>
 
 
 <h4>Your Solution</h4>
-After creating an initial [UML diagram](docs/MarsRoverUML.png) to outline my OOP approach, I began Test-Driven Development (TDD) to build a solution in Java. In the course of this, development became a balancing 
-act between following the UML and adhering to TDD with early parts of the TDD following my UML closely while latter stages began to differ slightly. The code was split into 3 classes and refactored where possible. 
+After creating an initial [UML diagram](docs/MarsRoverUML.drawio) to outline my OOP approach, I began Test-Driven Development (TDD) to build a solution in Java. In the course of this, development became a balancing 
+act between following the UML and adhering to TDD with early parts of the TDD following my [UML](docs/MarsRoverUML.png) closely while latter stages began to differ slightly. The code was split into 3 classes and refactored where possible. 
 <h4>Assumptions</h4>
 For the purposes of this project, I have assumed there are only 2 rovers, although I have coded it to easily allow for more. The Plateau is assumed to be rectangular.
 <h4>Future Thoughts</h4>
